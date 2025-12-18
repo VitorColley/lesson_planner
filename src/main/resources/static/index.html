@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Curriculum Mapping AI – Prototype</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      max-width: 900px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    textarea {
+      height: 80px;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 15px;
+      margin-top: 20px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Curriculum Mapping AI (Prototype)</h1>
+
+  <label>Subject</label>
+  <input id="subject" value="Computer Science"/>
+
+  <label>Age Group</label>
+  <input id="ageGroup" value="18–22 (Undergraduate)"/>
+
+  <label>Learning Outcomes</label>
+  <textarea id="outcomes">Students will understand REST APIs, HTTP methods, and JSON data exchange.</textarea>
+
+  <label>Topics</label>
+  <textarea id="topics">HTTP, REST, Controllers, JSON, APIs</textarea>
+
+  <label>Constraints</label>
+  <input id="constraints" value="6 weeks, 2 hours per week"/>
+
+  <button onclick="mapCurriculum()">Map Curriculum</button>
+
+  <h2>AI Output</h2>
+  <pre id="output">Waiting for input…</pre>
+
+  <script>
+    async function mapCurriculum() {
+      const data = {
+        subject: document.getElementById("subject").value,
+        ageGroup: document.getElementById("ageGroup").value,
+        outcomes: document.getElementById("outcomes").value,
+        topics: document.getElementById("topics").value,
+        constraints: document.getElementById("constraints").value
+      };
+
+      document.getElementById("output").textContent = "Thinking...";
+
+      const response = await fetch("/api/curriculum/map", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.json();
+      document.getElementById("output").textContent =
+        JSON.stringify(result, null, 2);
+    }
+  </script>
+
+</body>
+</html>
