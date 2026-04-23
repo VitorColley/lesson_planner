@@ -20,29 +20,35 @@ public class CurriculumIngestionService {
     private final Chunker chunker;
     private final CurriculumDocumentRepository documentRepository;
     private final CurriculumChunkRepository chunkRepository;
+    private final CurriculumMetadataClassifier metadataClassifier;
 
     public CurriculumIngestionService(
         PdfTextExtractor pdfTextExtractor,
         Chunker chunker,
         CurriculumDocumentRepository documentRepository,
-        CurriculumChunkRepository chunkRepository
+        CurriculumChunkRepository chunkRepository,
+        CurriculumMetadataClassifier metadataClassifier
     ) {
         this.pdfTextExtractor = pdfTextExtractor;
         this.chunker = chunker;
         this.documentRepository = documentRepository;
         this.chunkRepository = chunkRepository;
+        this.metadataClassifier = metadataClassifier;
     }
     
     @Transactional
-    public CurriculumDocument ingestScienceSpecfificPdf(InputStream pdfStream, String sorceRef) throws Exception {
+    public CurriculumDocument ingestCurriculumPdf(InputStream pdfStream, String sourceRef) throws Exception {
         String fullText = pdfTextExtractor.extractAllText(pdfStream);
 
+        CurriculumMetadata metadata = metadataClassifier.extractMetadata(fullText, sourceRef);
+
+
         CurriculumDocument document = new CurriculumDocument();
-        document.setSubject("Science");
-        document.setCycle("Junior Cycle");
-        document.setTitle("Junior Cycle Science Curriculum Specification");
+        document.setSubject(metadata.subject());
+        document.setCycle(metadata.cycle());
+        document.setTitle(metadata.title());
         document.setSourceType("PDF");
-        document.setSourceRef(sorceRef);
+        document.setSourceRef(sourceRef);
         document = documentRepository.save(document);
 
         List<String> chunks = chunker.chunk(fullText, 3500, 400);
@@ -57,6 +63,8 @@ public class CurriculumIngestionService {
             Map<String, Object> meta = new HashMap<>();
             meta.put("pipeline", "v1_char_chunker");
             meta.put("language", "en");
+            meta.put("detectedSubject", metadata.subject());
+            meta.put("detectedCycle", metadata.cycle());
             chunk.setMetadata(meta);
 
             chunkRepository.save(chunk);

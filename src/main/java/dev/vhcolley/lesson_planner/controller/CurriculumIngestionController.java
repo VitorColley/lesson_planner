@@ -12,19 +12,23 @@ import dev.vhcolley.lesson_planner.service.CurriculumIngestionService;
 @RestController
 @RequestMapping("/api/curriculum")
 public class CurriculumIngestionController {
+
     private final CurriculumIngestionService ingestionService;
     
     public CurriculumIngestionController(CurriculumIngestionService ingestionService) {
         this.ingestionService = ingestionService;
     }
 
-    @PostMapping("/ingest/science")
-    public ResponseEntity<?> ingestScience(@RequestParam("file") MultipartFile file) throws Exception{
+    @PostMapping("/ingest")
+    public ResponseEntity<?> ingestCurriculum(@RequestParam("file") MultipartFile file) throws Exception{
         if(file.isEmpty()){
             return ResponseEntity.badRequest().body("File is empty");
         }
 
-        CurriculumDocument document = ingestionService.ingestScienceSpecfificPdf(file.getInputStream(), file.getOriginalFilename());
+        CurriculumDocument document = ingestionService.ingestCurriculumPdf(
+            file.getInputStream(), 
+            file.getOriginalFilename()
+        );
 
         return ResponseEntity.ok().body(
             java.util.Map.of(
