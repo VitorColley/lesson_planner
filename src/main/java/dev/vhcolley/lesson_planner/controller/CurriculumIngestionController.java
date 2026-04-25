@@ -22,7 +22,7 @@ public class CurriculumIngestionController {
     @PostMapping("/ingest")
     public ResponseEntity<?> ingestCurriculum(@RequestParam("file") MultipartFile file) throws Exception{
         if(file.isEmpty()){
-            return ResponseEntity.badRequest().body("File is empty");
+            throw new IllegalArgumentException("File is empty"); 
         }
 
         CurriculumDocument document = ingestionService.ingestCurriculumPdf(

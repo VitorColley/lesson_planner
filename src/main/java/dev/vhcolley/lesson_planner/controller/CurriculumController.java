@@ -3,7 +3,6 @@ package dev.vhcolley.lesson_planner.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.vhcolley.lesson_planner.ai.CurriculumMappingAgent;
 import dev.vhcolley.lesson_planner.model.CurriculumRequest;
 import dev.vhcolley.lesson_planner.service.CurriculumMappingService;
 
