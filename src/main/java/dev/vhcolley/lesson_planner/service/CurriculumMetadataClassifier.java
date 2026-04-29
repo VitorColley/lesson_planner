@@ -56,8 +56,8 @@ public class CurriculumMetadataClassifier {
         if (normalized.contains("junior cycle")) {
             return "Junior Cycle";
         }
-        if (normalized.contains("leaving certificate")) {
-            return "Leaving Certificate";
+        if (normalized.contains("senior cycle")) {
+            return "Senior Cycle";
         }
         if (normalized.contains("primary curriculum") || normalized.contains("primary")) {
             return "Primary";
