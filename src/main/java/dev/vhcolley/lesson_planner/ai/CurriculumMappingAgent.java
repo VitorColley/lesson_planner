@@ -18,6 +18,7 @@ public class CurriculumMappingAgent {
         this.chatClient = builder.build();
     }
 
+    @SuppressWarnings("null")
     public String mapCurriculum(CurriculumRequest request){
         
         String systemPrompt = """
@@ -77,6 +78,7 @@ public class CurriculumMappingAgent {
         return chatClient.prompt().system(systemPrompt).user(userPrompt).call().content();
     }
 
+    @SuppressWarnings("null")
     public String mapWithRetrievedChunks(String lessonInput, List<CurriculumChunk> chunks){
         String context = chunks.stream().map(c -> "- Chunk #" + c.getId() + "\n" + c.getContent()).collect(Collectors.joining("\n\n"));
 
@@ -95,7 +97,7 @@ public class CurriculumMappingAgent {
         {
           "mappedOutcomes": [
             {
-              "chunk_id: 123,
+              "chunk_id": 123,
               "learning_outcome_ref": "UNKNOWN_OR_EXTRACTED",
               "justification": "..."
             }

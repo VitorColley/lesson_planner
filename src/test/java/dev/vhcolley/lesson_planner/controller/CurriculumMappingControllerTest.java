@@ -28,7 +28,8 @@ class CurriculumMappingControllerTest {
     @MockitoBean
     private CurriculumMappingService mappingService;
 
-    @Test
+    @SuppressWarnings("null")
+@Test
     void shouldMapCurriculumAndReturnMappedOutcomes() throws Exception {
         Map<String, Object> serviceResponse = Map.of(
                 "result", Map.of(
@@ -67,7 +68,8 @@ class CurriculumMappingControllerTest {
                 .andExpect(jsonPath("$.retrievedChunksIds[0]").value(1));
     }
 
-    @Test
+    @SuppressWarnings("null")
+@Test
     void shouldReturnBadRequestWhenMappingServiceThrowsIllegalArgumentException() throws Exception {
         when(mappingService.mapLessonToCurriculum(contains("Subject: Science")))
                 .thenThrow(new IllegalArgumentException("Unable to map curriculum request"));

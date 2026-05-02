@@ -65,6 +65,7 @@ class CurriculumIngestionIntegrationTest {
         assertEquals("PDF", document.getSourceType());
         assertEquals("junior-cycle-science.pdf", document.getSourceRef());
 
+        @SuppressWarnings("null")
         CurriculumDocument savedDocument = documentRepository.findById(document.getId())
                 .orElseThrow();
 

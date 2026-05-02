@@ -1,0 +1,16 @@
+package dev.vhcolley.lesson_planner.dto;
+
+import java.util.List;
+
+public record SelectedActivity(
+        String id,
+        String title,
+        String method,
+        String lessonStage,
+        int durationMinutes,
+        String description,
+        String teacherRole,
+        String studentTask,
+        List<String> materials
+) {
+}
