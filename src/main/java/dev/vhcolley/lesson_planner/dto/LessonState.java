@@ -11,6 +11,7 @@ public record LessonState(
         String currentStage,
         List<String> mappedOutcomes,
         List<SelectedActivity> selectedActivities,
-        String constraints
+        String constraints,
+        int regenerationCount
 ) {
 }

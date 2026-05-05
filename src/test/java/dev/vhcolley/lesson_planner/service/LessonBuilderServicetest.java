@@ -22,7 +22,8 @@ class LessonBuilderServiceTest {
                 "STARTER",
                 List.of("3.6"),
                 List.of(),
-                "Mixed ability class"
+                "Mixed ability class",
+                0
         );
 
         ActivityCard selectedCard = new ActivityCard(
@@ -65,7 +66,8 @@ class LessonBuilderServiceTest {
                 "MAIN",
                 List.of("3.6"),
                 List.of(),
-                "Mixed ability class"
+                "Mixed ability class",
+                0
         );
 
         ActivityCard selectedCard = new ActivityCard(
@@ -100,7 +102,8 @@ class LessonBuilderServiceTest {
                 "PLENARY",
                 List.of("3.6"),
                 List.of(),
-                "Mixed ability class"
+                "Mixed ability class",
+                0
         );
 
         ActivityCard selectedCard = new ActivityCard(
@@ -147,7 +150,8 @@ class LessonBuilderServiceTest {
                 "MAIN",
                 List.of("3.6"),
                 List.of(existingActivity),
-                "Mixed ability class"
+                "Mixed ability class",
+                0
         );
 
         ActivityCard selectedCard = new ActivityCard(

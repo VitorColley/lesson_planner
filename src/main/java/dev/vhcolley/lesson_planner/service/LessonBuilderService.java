@@ -48,7 +48,8 @@ public class LessonBuilderService {
                 nextStage,
                 state.mappedOutcomes(),
                 updatedActivities,
-                state.constraints()
+                state.constraints(),
+                0
         );
     }
 

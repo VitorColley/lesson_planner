@@ -29,7 +29,8 @@ class ActivitySuggestionServiceTest {
                 "STARTER",
                 List.of("3.6"),
                 List.of(),
-                "Mixed ability class"
+                "Mixed ability class",
+                0
         );
 
         List<ActivityCard> suggestions = activitySuggestionService.suggestActivities(state);
@@ -67,7 +68,8 @@ class ActivitySuggestionServiceTest {
                 "STARTER",
                 List.of("3.6"),
                 List.of(selected),
-                "Mixed ability class"
+                "Mixed ability class",
+                0
         );
 
         List<ActivityCard> suggestions = activitySuggestionService.suggestActivities(state);
@@ -87,7 +89,8 @@ class ActivitySuggestionServiceTest {
                 "MAIN",
                 List.of("3.6"),
                 List.of(),
-                "Mixed ability class"
+                "Mixed ability class",
+                0
         );
 
         List<ActivityCard> suggestions = activitySuggestionService.suggestActivities(state);

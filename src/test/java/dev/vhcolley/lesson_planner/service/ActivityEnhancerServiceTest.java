@@ -57,7 +57,8 @@ class AiActivityEnhancerServiceTest {
                 "STARTER",
                 List.of("3.6"),
                 List.of(),
-                "Mixed ability class"
+                "Mixed ability class",
+                0
         );
 
         ActivityCard enhanced = enhancerService.enhance(card, state);
@@ -101,7 +102,8 @@ class AiActivityEnhancerServiceTest {
                 "STARTER",
                 List.of("3.6"),
                 List.of(),
-                "Mixed ability class"
+                "Mixed ability class",
+                0
         );
 
         ActivityCard enhanced = enhancerService.enhance(card, state);

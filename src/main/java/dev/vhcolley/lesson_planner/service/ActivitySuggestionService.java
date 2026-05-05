@@ -36,8 +36,11 @@ public class ActivitySuggestionService {
                 .filter(activity -> notAlreadySelected(activity, selectedActivityIds))
                 .limit(3)
                 .toList();
+        int start = filtered.isEmpty() ? 0 : (state.regenerationCount() * 3) % filtered.size();
 
         return filtered.stream()
+                .skip(start)
+                .limit(3)
                 .map(activity -> toActivityCard(activity, state))
                 .map(card -> aiActivityEnhancerService.enhance(card, state))
                 .toList();

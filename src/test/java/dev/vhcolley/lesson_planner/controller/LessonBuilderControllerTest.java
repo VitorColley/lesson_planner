@@ -90,7 +90,8 @@ class LessonBuilderControllerTest {
                 "MAIN",
                 List.of("3.6"),
                 List.of(),
-                "Mixed ability class"
+                "Mixed ability class",
+                0
         );
 
         when(lessonBuilderService.applySelection(any(SelectActivityRequest.class)))
