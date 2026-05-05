@@ -1,17 +1,34 @@
 package dev.vhcolley.lesson_planner.service;
 
+import dev.vhcolley.lesson_planner.ai.ActivityEnhancementAgent;
 import dev.vhcolley.lesson_planner.dto.ActivityCard;
 import dev.vhcolley.lesson_planner.dto.EnhancedActivityText;
 import dev.vhcolley.lesson_planner.dto.LessonState;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 @Service
 public class AiActivityEnhancerService {
+        
+        private final ActivityEnhancementAgent activityEnhancementAgent;
+        private final ObjectMapper objectMapper;
 
-    public ActivityCard enhance(ActivityCard card, LessonState state) {
-        EnhancedActivityText enhancedText = enhanceText(card, state);
+        public AiActivityEnhancerService(
+                ActivityEnhancementAgent activityEnhancementAgent,
+                ObjectMapper objectMapper
+        ) {
+                this.activityEnhancementAgent = activityEnhancementAgent;
+                this.objectMapper = objectMapper;
+        }
 
-        return new ActivityCard(
+        public ActivityCard enhance(ActivityCard card, LessonState state) {        
+        try{
+                String json = activityEnhancementAgent.enhanceActivity(card, state);
+                
+                EnhancedActivityText enhancedText = objectMapper.readValue(json, EnhancedActivityText.class);
+
+                return new ActivityCard(
                 card.id(),
                 card.title(),
                 card.method(),
@@ -23,34 +40,8 @@ public class AiActivityEnhancerService {
                 enhancedText.studentTask(),
                 card.materials()
         );
-    }
-
-    private EnhancedActivityText enhanceText(ActivityCard card, LessonState state) {
-        String description = card.description()
-                + " The activity should focus specifically on the topic: "
-                + state.topic()
-                + ".";
-
-        String whyThisFits = card.whyThisFits()
-                + " It is aligned with the selected learning outcome(s): "
-                + String.join(", ", state.mappedOutcomes())
-                + ".";
-
-        String teacherRole = card.teacherRole()
-                + " The teacher should connect the activity clearly to "
-                + state.topic()
-                + ".";
-
-        String studentTask = card.studentTask()
-                + " Students should apply their understanding of "
-                + state.topic()
-                + ".";
-
-        return new EnhancedActivityText(
-                description,
-                whyThisFits,
-                teacherRole,
-                studentTask
-        );
+        }catch(Exception ex){
+                return card;                
+        }
     }
 }
