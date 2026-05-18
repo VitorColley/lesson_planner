@@ -1,9 +1,10 @@
-package dev.vhcolley.lesson_planner.service;
+package dev.vhcolley.lesson_planner.service.LessonBuilder;
 
 import dev.vhcolley.lesson_planner.dto.ActivityCard;
 import dev.vhcolley.lesson_planner.dto.ActivityTemplate;
 import dev.vhcolley.lesson_planner.dto.LessonState;
 import dev.vhcolley.lesson_planner.dto.SelectedActivity;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package dev.vhcolley.lesson_planner.controller;
 
 import dev.vhcolley.lesson_planner.domain.CurriculumDocument;
-import dev.vhcolley.lesson_planner.service.CurriculumIngestionService;
+import dev.vhcolley.lesson_planner.service.CurriculumMapping.CurriculumIngestion.CurriculumIngestionService;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

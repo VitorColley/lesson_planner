@@ -1,3 +1,7 @@
+// References:
+// - Spring AI ChatClient documentation for building prompts and calling the API
+// https://docs.spring.io/spring-ai/reference/api/chatclient.html
+
 package dev.vhcolley.lesson_planner.ai;
 
 import java.util.stream.Collectors;

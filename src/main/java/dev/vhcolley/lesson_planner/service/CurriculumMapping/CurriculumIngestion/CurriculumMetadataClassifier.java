@@ -1,9 +1,11 @@
-package dev.vhcolley.lesson_planner.service;
+package dev.vhcolley.lesson_planner.service.CurriculumMapping.CurriculumIngestion;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+
+import dev.vhcolley.lesson_planner.dto.CurriculumMetadata;
 
 @Service
 public class CurriculumMetadataClassifier {

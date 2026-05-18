@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
+import dev.vhcolley.lesson_planner.dto.ApiErrorResponse;
+
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 

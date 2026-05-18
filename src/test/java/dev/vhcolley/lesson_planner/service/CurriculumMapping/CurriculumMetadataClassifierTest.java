@@ -1,6 +1,9 @@
-package dev.vhcolley.lesson_planner.service;
+package dev.vhcolley.lesson_planner.service.CurriculumMapping;
 
 import org.junit.jupiter.api.Test;
+
+import dev.vhcolley.lesson_planner.dto.CurriculumMetadata;
+import dev.vhcolley.lesson_planner.service.CurriculumMapping.CurriculumIngestion.CurriculumMetadataClassifier;
 
 import static org.junit.jupiter.api.Assertions.*;
 

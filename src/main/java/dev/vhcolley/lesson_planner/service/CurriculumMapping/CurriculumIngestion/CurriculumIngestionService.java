@@ -1,4 +1,12 @@
-package dev.vhcolley.lesson_planner.service;
+// References:
+// - Apache PDFBox for PDF text extraction
+// https://pdfbox.apache.org/docs/2.0.0/javadocs/org/apache/pdfbox/text/PDFTextStripper.html
+// -RAG pattern for document ingestion and retrieval
+// https://www.postgresql.org/docs/current/textsearch.html
+// - Tutorial on creating a RAG system
+// https://www.youtube.com/watch?v=7TdOwFcLV5s
+
+package dev.vhcolley.lesson_planner.service.CurriculumMapping.CurriculumIngestion;
 
 import java.io.InputStream;
 import java.util.HashMap;
@@ -10,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import dev.vhcolley.lesson_planner.domain.CurriculumChunk;
 import dev.vhcolley.lesson_planner.domain.CurriculumDocument;
+import dev.vhcolley.lesson_planner.dto.CurriculumMetadata;
 import dev.vhcolley.lesson_planner.repository.CurriculumChunkRepository;
 import dev.vhcolley.lesson_planner.repository.CurriculumDocumentRepository;
 

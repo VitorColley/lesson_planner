@@ -1,9 +1,15 @@
-package dev.vhcolley.lesson_planner.service;
+package dev.vhcolley.lesson_planner.service.CurriculumMapping;
 
 import dev.vhcolley.lesson_planner.domain.CurriculumChunk;
 import dev.vhcolley.lesson_planner.domain.CurriculumDocument;
+import dev.vhcolley.lesson_planner.dto.CurriculumMetadata;
 import dev.vhcolley.lesson_planner.repository.CurriculumChunkRepository;
 import dev.vhcolley.lesson_planner.repository.CurriculumDocumentRepository;
+import dev.vhcolley.lesson_planner.service.CurriculumMapping.CurriculumIngestion.Chunker;
+import dev.vhcolley.lesson_planner.service.CurriculumMapping.CurriculumIngestion.CurriculumIngestionService;
+import dev.vhcolley.lesson_planner.service.CurriculumMapping.CurriculumIngestion.CurriculumMetadataClassifier;
+import dev.vhcolley.lesson_planner.service.CurriculumMapping.CurriculumIngestion.PdfTextExtractor;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;

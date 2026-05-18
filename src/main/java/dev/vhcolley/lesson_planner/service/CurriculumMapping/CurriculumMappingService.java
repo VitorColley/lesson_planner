@@ -1,4 +1,7 @@
-package dev.vhcolley.lesson_planner.service;
+// References:
+//// - PostgreSQL full-text search for efficient curriculum chunk retrieval
+// https://www.postgresql.org/docs/current/textsearch.html
+package dev.vhcolley.lesson_planner.service.CurriculumMapping;
 
 import java.util.List;
 import java.util.Map;

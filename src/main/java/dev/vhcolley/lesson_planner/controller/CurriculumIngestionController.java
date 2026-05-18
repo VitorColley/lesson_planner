@@ -1,3 +1,7 @@
+//References:
+// - https://spring.io/guides/tutorials/rest
+// - https://www.geeksforgeeks.org/advance-java/spring-rest-controller/
+
 package dev.vhcolley.lesson_planner.controller;
 
 import org.springframework.http.ResponseEntity;
@@ -7,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import dev.vhcolley.lesson_planner.domain.CurriculumDocument;
-import dev.vhcolley.lesson_planner.service.CurriculumIngestionService;
+import dev.vhcolley.lesson_planner.service.CurriculumMapping.CurriculumIngestion.CurriculumIngestionService;
 
 @RestController
 @RequestMapping("/api/curriculum")

@@ -1,3 +1,7 @@
+// References:
+// - Spring AI ChatClient documentation for building prompts and calling the API
+// https://docs.spring.io/spring-ai/reference/api/chatclient.html
+
 package dev.vhcolley.lesson_planner.ai;
 
 import java.util.List;
@@ -7,7 +11,7 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Component;
 
 import dev.vhcolley.lesson_planner.domain.CurriculumChunk;
-import dev.vhcolley.lesson_planner.model.CurriculumRequest;
+import dev.vhcolley.lesson_planner.dto.CurriculumRequest;
 
 @Component
 public class CurriculumMappingAgent {
@@ -28,7 +32,6 @@ public class CurriculumMappingAgent {
         - Adapt the curriculum to the learner's age group and subject
         - Explain WHY outcomes are mapped to units
         - Highlight pedagogical reasoning
-        - Ask clarifying questions ONLY if essential information is missing
 
         Output STRICT JSON only in the following structure:
 
@@ -47,8 +50,7 @@ public class CurriculumMappingAgent {
         ],
         "pedagogicalNotes": [],
         "gaps": [],
-        "overlaps": [],
-        "clarifyingQuestions": []
+        "overlaps": []
         }
         """;
 

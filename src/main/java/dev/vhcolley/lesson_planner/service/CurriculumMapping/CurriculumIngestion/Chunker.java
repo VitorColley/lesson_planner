@@ -1,4 +1,10 @@
-package dev.vhcolley.lesson_planner.service;
+// References:
+// -RAG pattern for document ingestion and retrieval
+// https://encore.dev/blog/you-probably-dont-need-a-vector-database
+// - Tutorial on creating a RAG system with PGVector
+// https://www.youtube.com/watch?v=7TdOwFcLV5s
+
+package dev.vhcolley.lesson_planner.service.CurriculumMapping.CurriculumIngestion;
 
 import java.util.ArrayList;
 import java.util.List;

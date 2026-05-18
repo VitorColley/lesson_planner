@@ -1,10 +1,9 @@
-package dev.vhcolley.lesson_planner.service;
+package dev.vhcolley.lesson_planner.service.LessonBuilder;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import dev.vhcolley.lesson_planner.dto.ActivityTemplate;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

@@ -3,8 +3,8 @@ package dev.vhcolley.lesson_planner.controller;
 import dev.vhcolley.lesson_planner.dto.ActivityCard;
 import dev.vhcolley.lesson_planner.dto.LessonState;
 import dev.vhcolley.lesson_planner.dto.SelectActivityRequest;
-import dev.vhcolley.lesson_planner.service.ActivitySuggestionService;
-import dev.vhcolley.lesson_planner.service.LessonBuilderService;
+import dev.vhcolley.lesson_planner.service.LessonBuilder.ActivitySuggestionService;
+import dev.vhcolley.lesson_planner.service.LessonBuilder.LessonBuilderService;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

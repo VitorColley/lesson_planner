@@ -1,4 +1,4 @@
-package dev.vhcolley.lesson_planner.service;
+package dev.vhcolley.lesson_planner.service.CurriculumMapping;
 
 import java.util.Map;
 

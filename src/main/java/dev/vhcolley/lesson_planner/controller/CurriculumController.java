@@ -1,10 +1,14 @@
+//References:
+// - https://spring.io/guides/tutorials/rest
+// - https://www.geeksforgeeks.org/advance-java/spring-rest-controller/
+
 package dev.vhcolley.lesson_planner.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.vhcolley.lesson_planner.model.CurriculumRequest;
-import dev.vhcolley.lesson_planner.service.CurriculumMappingService;
+import dev.vhcolley.lesson_planner.dto.CurriculumRequest;
+import dev.vhcolley.lesson_planner.service.CurriculumMapping.CurriculumMappingService;
 
 import java.util.Map;
 

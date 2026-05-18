@@ -1,3 +1,8 @@
+// References:
+// - Spring Data JPA for database interactions and entity management
+// https://www.youtube.com/watch?v=cK4mi5kZSoE
+// https://spring.io/projects/spring-data-jpa
+
 package dev.vhcolley.lesson_planner.domain;
 
 import java.time.OffsetDateTime;

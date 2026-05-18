@@ -1,6 +1,7 @@
-package dev.vhcolley.lesson_planner.service;
+package dev.vhcolley.lesson_planner.service.LessonBuilder;
 
 import dev.vhcolley.lesson_planner.dto.*;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

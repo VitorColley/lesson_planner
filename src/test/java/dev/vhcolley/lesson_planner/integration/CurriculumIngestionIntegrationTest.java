@@ -4,8 +4,8 @@ import dev.vhcolley.lesson_planner.domain.CurriculumChunk;
 import dev.vhcolley.lesson_planner.domain.CurriculumDocument;
 import dev.vhcolley.lesson_planner.repository.CurriculumChunkRepository;
 import dev.vhcolley.lesson_planner.repository.CurriculumDocumentRepository;
-import dev.vhcolley.lesson_planner.service.CurriculumIngestionService;
-import dev.vhcolley.lesson_planner.service.PdfTextExtractor;
+import dev.vhcolley.lesson_planner.service.CurriculumMapping.CurriculumIngestion.CurriculumIngestionService;
+import dev.vhcolley.lesson_planner.service.CurriculumMapping.CurriculumIngestion.PdfTextExtractor;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
