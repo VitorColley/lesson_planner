@@ -9,7 +9,7 @@ public record LessonState(
         int totalDurationMinutes,
         int remainingMinutes,
         String currentStage,
-        List<String> mappedOutcomes,
+        List<MappedOutcome> mappedOutcomes,
         List<SelectedActivity> selectedActivities,
         String constraints,
         int regenerationCount

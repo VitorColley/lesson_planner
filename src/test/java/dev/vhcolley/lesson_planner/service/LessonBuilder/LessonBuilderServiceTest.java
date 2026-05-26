@@ -21,7 +21,14 @@ class LessonBuilderServiceTest {
                 40,
                 40,
                 "STARTER",
-                List.of("3.6"),
+                List.of(
+                new MappedOutcome(
+                        "3.6",
+                        "Students should investigate acids and bases using the pH scale.",
+                        "The lesson topic focuses on pH scale.",
+                        1L
+                )
+                ),
                 List.of(),
                 "Mixed ability class",
                 0
@@ -65,7 +72,14 @@ class LessonBuilderServiceTest {
                 40,
                 32,
                 "MAIN",
-                List.of("3.6"),
+                List.of(
+                        new MappedOutcome(
+                                "3.6",
+                                "Students should investigate acids and bases using the pH scale.",
+                                "The lesson topic focuses on pH scale.",
+                                1L
+                        )
+                ),
                 List.of(),
                 "Mixed ability class",
                 0
@@ -101,7 +115,14 @@ class LessonBuilderServiceTest {
                 40,
                 5,
                 "PLENARY",
-                List.of("3.6"),
+                List.of(
+                        new MappedOutcome(
+                                "3.6",
+                                "Students should investigate acids and bases using the pH scale.",
+                                "The lesson topic focuses on pH scale.",
+                                1L
+                        )
+                ),
                 List.of(),
                 "Mixed ability class",
                 0
@@ -149,7 +170,14 @@ class LessonBuilderServiceTest {
                 40,
                 35,
                 "MAIN",
-                List.of("3.6"),
+                List.of(
+                        new MappedOutcome(
+                                "3.6",
+                                "Students should investigate acids and bases using the pH scale.",
+                                "The lesson topic focuses on pH scale.",
+                                1L
+                        )
+                ),
                 List.of(existingActivity),
                 "Mixed ability class",
                 0

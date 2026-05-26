@@ -3,6 +3,7 @@ package dev.vhcolley.lesson_planner.service.LessonBuilder;
 import dev.vhcolley.lesson_planner.ai.ActivityEnhancementAgent;
 import dev.vhcolley.lesson_planner.dto.ActivityCard;
 import dev.vhcolley.lesson_planner.dto.LessonState;
+import dev.vhcolley.lesson_planner.dto.MappedOutcome;
 
 import org.junit.jupiter.api.Test;
 
@@ -56,7 +57,14 @@ class AiActivityEnhancerServiceTest {
                 40,
                 40,
                 "STARTER",
-                List.of("3.6"),
+                List.of(
+                new MappedOutcome(
+                        "3.6",
+                        "Students should investigate acids and bases using the pH scale.",
+                        "The lesson topic focuses on pH scale.",
+                        1L
+                )
+                ),
                 List.of(),
                 "Mixed ability class",
                 0
@@ -101,7 +109,14 @@ class AiActivityEnhancerServiceTest {
                 40,
                 40,
                 "STARTER",
-                List.of("3.6"),
+                List.of(
+                new MappedOutcome(
+                        "3.6",
+                        "Students should investigate acids and bases using the pH scale.",
+                        "The lesson topic focuses on pH scale.",
+                        1L
+                )
+                ),
                 List.of(),
                 "Mixed ability class",
                 0

@@ -4,6 +4,7 @@ import dev.vhcolley.lesson_planner.dto.ActivityCard;
 import dev.vhcolley.lesson_planner.dto.ActivityTemplate;
 import dev.vhcolley.lesson_planner.dto.LessonState;
 import dev.vhcolley.lesson_planner.dto.SelectedActivity;
+import dev.vhcolley.lesson_planner.dto.MappedOutcome;
 
 import org.springframework.stereotype.Service;
 
@@ -29,20 +30,23 @@ public class ActivitySuggestionService {
                 .map(SelectedActivity::id)
                 .toList();
 
-        List<ActivityTemplate> filtered = activityBankService.loadActivities().stream()
+        List<ActivityTemplate> candidates = activityBankService.loadActivities().stream()
                 .filter(activity -> matchesStage(activity, state.currentStage()))
                 .filter(activity -> fitsTime(activity, state.remainingMinutes()))
                 .filter(activity -> matchesSubject(activity, state.subject()))
                 .filter(activity -> matchesAgeGroup(activity, state.ageGroup()))
                 .filter(activity -> notAlreadySelected(activity, selectedActivityIds))
-                .limit(3)
                 .toList();
-                
-        int start = filtered.isEmpty() ? 0 : (state.regenerationCount() * 3) % filtered.size();
 
-        return filtered.stream()
-                .skip(start)
-                .limit(3)
+        if (candidates.isEmpty()) {
+            return List.of();
+        }
+
+        int start = Math.floorMod(state.regenerationCount() * 3, candidates.size());
+
+        return java.util.stream.IntStream
+                .range(0, Math.min(3, candidates.size()))
+                .mapToObj(i -> candidates.get((start + i) % candidates.size()))
                 .map(activity -> toActivityCard(activity, state))
                 .map(card -> aiActivityEnhancerService.enhance(card, state))
                 .toList();
@@ -77,7 +81,12 @@ public class ActivitySuggestionService {
 
     private String buildWhyThisFits(ActivityTemplate activity, LessonState state) {
         String outcomePart = state.mappedOutcomes() != null && !state.mappedOutcomes().isEmpty()
-                ? " It supports learning outcome(s): " + String.join(", ", state.mappedOutcomes()) + "."
+                ? " It supports learning outcome(s): "
+                    + state.mappedOutcomes()
+                        .stream()
+                        .map(MappedOutcome::learningOutcomeRef)
+                        .collect(java.util.stream.Collectors.joining(", "))
+                    + "."
                 : "";
 
         return "This activity uses " + activity.method().toLowerCase()

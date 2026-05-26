@@ -1,10 +1,12 @@
 package dev.vhcolley.lesson_planner.controller;
 
-import dev.vhcolley.lesson_planner.dto.ActivityCard;
-import dev.vhcolley.lesson_planner.dto.LessonState;
-import dev.vhcolley.lesson_planner.dto.SelectActivityRequest;
-import dev.vhcolley.lesson_planner.service.LessonBuilder.ActivitySuggestionService;
-import dev.vhcolley.lesson_planner.service.LessonBuilder.LessonBuilderService;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +16,12 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.List;
-
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import dev.vhcolley.lesson_planner.dto.ActivityCard;
+import dev.vhcolley.lesson_planner.dto.LessonState;
+import dev.vhcolley.lesson_planner.dto.MappedOutcome;
+import dev.vhcolley.lesson_planner.dto.SelectActivityRequest;
+import dev.vhcolley.lesson_planner.service.LessonBuilder.ActivitySuggestionService;
+import dev.vhcolley.lesson_planner.service.LessonBuilder.LessonBuilderService;
 
 @WebMvcTest(LessonBuilderController.class)
 @Import(GlobalExceptionHandler.class)
@@ -88,7 +90,14 @@ class LessonBuilderControllerTest {
                 40,
                 32,
                 "MAIN",
-                List.of("3.6"),
+                List.of(
+                new MappedOutcome(
+                        "3.6",
+                        "Students should investigate acids and bases using the pH scale.",
+                        "The lesson topic focuses on pH scale.",
+                        1L
+                )
+                ),
                 List.of(),
                 "Mixed ability class",
                 0

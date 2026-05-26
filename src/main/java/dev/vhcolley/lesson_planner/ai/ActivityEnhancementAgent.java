@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import dev.vhcolley.lesson_planner.dto.ActivityCard;
 import dev.vhcolley.lesson_planner.dto.LessonState;
+import dev.vhcolley.lesson_planner.dto.MappedOutcome;
 
 @Component
 public class ActivityEnhancementAgent {
@@ -25,7 +26,10 @@ public class ActivityEnhancementAgent {
     public String enhanceActivity(ActivityCard card, LessonState state) {
         String mappedOutcomes = state.mappedOutcomes() == null
                 ? ""
-                : state.mappedOutcomes().stream().collect(Collectors.joining(", "));
+                : state.mappedOutcomes()
+                        .stream()
+                        .map(this::formatMappedOutcome)
+                        .collect(Collectors.joining("\n"));
 
         String materials = card.materials() == null
                 ? ""
@@ -113,5 +117,18 @@ public class ActivityEnhancementAgent {
                 .user(userPrompt)
                 .call()
                 .content();
+    }
+    private String formatMappedOutcome(MappedOutcome outcome) {
+        return """
+                - Outcome Ref: %s
+                Curriculum Text: %s
+                Justification: %s
+                Chunk ID: %s
+                """.formatted(
+                outcome.learningOutcomeRef(),
+                outcome.curriculumText(),
+                outcome.justification(),
+                outcome.chunkId()
+        );
     }
 }
