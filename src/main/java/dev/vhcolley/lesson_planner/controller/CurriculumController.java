@@ -43,7 +43,7 @@ public class CurriculumController {
                         request.outcomes(),
                         request.constraints()
                 );
-        Map<String, Object> response = mappingService.mapLessonToCurriculum(lessonQuery);
+        Map<String, Object> response = mappingService.mapLessonToCurriculum(lessonQuery, request.subject());
         return ResponseEntity.ok(response);
     }
 }

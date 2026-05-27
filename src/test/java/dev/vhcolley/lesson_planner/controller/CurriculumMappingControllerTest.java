@@ -45,7 +45,7 @@ class CurriculumMappingControllerTest {
                 "retrievedChunksIds", List.of(1, 2, 3, 4, 5)
         );
 
-        when(mappingService.mapLessonToCurriculum(contains("Subject: Science")))
+        when(mappingService.mapLessonToCurriculum(contains("Subject: Science"), "Science"))
                 .thenReturn(serviceResponse);
 
         String requestBody = """
@@ -71,7 +71,7 @@ class CurriculumMappingControllerTest {
     @SuppressWarnings("null")
 @Test
     void shouldReturnBadRequestWhenMappingServiceThrowsIllegalArgumentException() throws Exception {
-        when(mappingService.mapLessonToCurriculum(contains("Subject: Science")))
+        when(mappingService.mapLessonToCurriculum(contains("Subject: Science"), "Science"))
                 .thenThrow(new IllegalArgumentException("Unable to map curriculum request"));
 
         String requestBody = """

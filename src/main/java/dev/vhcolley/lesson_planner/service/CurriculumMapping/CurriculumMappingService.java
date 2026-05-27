@@ -28,8 +28,8 @@ public class CurriculumMappingService {
     }
 
     @Transactional
-    public Map<String, Object> mapLessonToCurriculum(String lessonInput){
-        List<CurriculumChunk> chunks = curriculumRetrieval.retrieveTopChunks(lessonInput, 10);
+    public Map<String, Object> mapLessonToCurriculum(String lessonInput, String subject) {
+        List<CurriculumChunk> chunks = curriculumRetrieval.retrieveTopChunks(lessonInput, subject,  10);
         
         String aiJson = curriculumMappingAgent.mapWithRetrievedChunks(lessonInput, chunks);
 

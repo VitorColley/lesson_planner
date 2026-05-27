@@ -25,7 +25,7 @@ public class CurriculumRetrievalService {
         this.curriculumDocument = curriculumDocument;
     }
 
-    public List<CurriculumChunk> retrieveTopChunks(String query, int limit){
+    public List<CurriculumChunk> retrieveTopChunks(String query, String subject, int limit){
         int safeLimit = Math.max(1, Math.min(limit,25));
         String q = normaliseQuery(query);
 
@@ -34,7 +34,7 @@ public class CurriculumRetrievalService {
             return hits;
         }
 
-        Long latestDocId = curriculumDocument.findTopByOrderByIdDesc().map(CurriculumDocument::getId).orElse(null);
+        Long latestDocId = curriculumDocument.findTopBySubjectOrderByIdDesc(subject).map(CurriculumDocument::getId).orElse(null);
 
         if(latestDocId == null){
             return List.of();
